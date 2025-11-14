@@ -5,9 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
+    />
     <script src="script.js"></script>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div class="layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h2>My Projects</h2>
+          <button class="sidebar-header-button">+</button>
+        </div>
+        <div class="sidebar-body">
+          <div class="sidebar-body-item">
+            <h3>Project 1</h3>
+            <i class="fi fi-ss-trash"></i>
+          </div>
+          <div class="sidebar-body-item">
+            <h3>Project 2</h3>
+            <i class="fi fi-ss-trash"></i>
+          </div>
+          <div class="sidebar-body-item">
+            <h3>Project 3</h3>
+            <i class="fi fi-ss-trash"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <main class="content">
+        <h1>Project 1</h1>
+        <!-- Template Todo Card -->
+        <div class="todo-card">
+          <label class="round-checkbox">
+            <input type="checkbox" />
+            <span></span>
+          </label>
+          <div class="todo-content">
+            <h3 class="todo-title">Task 1</h3>
+            <p class="todo-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <div class="todo-meta">
+              <span class="todo-date">Deadline : 13/11/2025</span>
+              <span class="todo-priority priority-high">Priority : High</span>
+            </div>
+          </div>
+          <div class="todo-actions">
+            <i class="fi fi-ss-pencil todo-action-edit"></i>
+            <i class="fi fi-ss-trash todo-action-delete"></i>
+          </div>
+        </div>
+        <!-- Template Todo Card -->
+        <div class="todo-card">
+          <label class="round-checkbox">
+            <input type="checkbox" />
+            <span></span>
+          </label>
+          <div class="todo-content">
+            <h3 class="todo-title">Task 2</h3>
+            <p class="todo-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <div class="todo-meta">
+              <span class="todo-date">Deadline : 08/12/2025</span>
+              <span class="todo-priority priority-medium"
+                >Priority : Medium</span
+              >
+            </div>
+          </div>
+          <div class="todo-actions">
+            <i class="fi fi-ss-pencil todo-action-edit"></i>
+            <i class="fi fi-ss-trash todo-action-delete"></i>
+          </div>
+        </div>
+        <!-- Template Todo Card -->
+        <div class="todo-card">
+          <label class="round-checkbox">
+            <input type="checkbox" />
+            <span></span>
+          </label>
+          <div class="todo-content">
+            <h3 class="todo-title">Task 3</h3>
+            <p class="todo-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <div class="todo-meta">
+              <span class="todo-date">Deadline : 08/12/2025</span>
+              <span class="todo-priority priority-low">Priority : Low</span>
+            </div>
+          </div>
+          <div class="todo-actions">
+            <i class="fi fi-ss-pencil todo-action-edit"></i>
+            <i class="fi fi-ss-trash todo-action-delete"></i>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
