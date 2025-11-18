@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css"
     />
-    <script src="script.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
   </head>
   <body>
     <div class="layout">
@@ -37,74 +37,24 @@
       <!-- Main Content -->
       <main class="content">
         <h1>Project 1</h1>
-        <!-- Template Todo Card -->
-        <div class="todo-card">
-          <label class="round-checkbox">
-            <input type="checkbox" />
-            <span></span>
-          </label>
-          <div class="todo-content">
-            <h3 class="todo-title">Task 1</h3>
-            <p class="todo-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              quos.
-            </p>
-            <div class="todo-meta">
-              <span class="todo-date">Deadline : 13/11/2025</span>
-              <span class="todo-priority priority-high">Priority : High</span>
-            </div>
-          </div>
-          <div class="todo-actions">
-            <i class="fi fi-ss-pencil todo-action-edit"></i>
-            <i class="fi fi-ss-trash todo-action-delete"></i>
+        <div class="modal">
+          <div class="modal-content">
+            <h2>Add Todo</h2>
+            <form>
+              <input type="text" placeholder="Todo Title" />
+              <input type="text" placeholder="Todo Description" />
+              <input type="date" name="deadline" id="deadline" />
+              <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <button type="submit">Add Todo</button>
+            </form>
           </div>
         </div>
         <!-- Template Todo Card -->
-        <div class="todo-card">
-          <label class="round-checkbox">
-            <input type="checkbox" />
-            <span></span>
-          </label>
-          <div class="todo-content">
-            <h3 class="todo-title">Task 2</h3>
-            <p class="todo-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              quos.
-            </p>
-            <div class="todo-meta">
-              <span class="todo-date">Deadline : 08/12/2025</span>
-              <span class="todo-priority priority-medium"
-                >Priority : Medium</span
-              >
-            </div>
-          </div>
-          <div class="todo-actions">
-            <i class="fi fi-ss-pencil todo-action-edit"></i>
-            <i class="fi fi-ss-trash todo-action-delete"></i>
-          </div>
-        </div>
-        <!-- Template Todo Card -->
-        <div class="todo-card">
-          <label class="round-checkbox">
-            <input type="checkbox" />
-            <span></span>
-          </label>
-          <div class="todo-content">
-            <h3 class="todo-title">Task 3</h3>
-            <p class="todo-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              quos.
-            </p>
-            <div class="todo-meta">
-              <span class="todo-date">Deadline : 08/12/2025</span>
-              <span class="todo-priority priority-low">Priority : Low</span>
-            </div>
-          </div>
-          <div class="todo-actions">
-            <i class="fi fi-ss-pencil todo-action-edit"></i>
-            <i class="fi fi-ss-trash todo-action-delete"></i>
-          </div>
-        </div>
+        <div id="todo-list"></div>
       </main>
     </div>
   </body>
