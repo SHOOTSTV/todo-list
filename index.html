@@ -37,13 +37,17 @@
       <!-- Main Content -->
       <main class="content">
         <h1>Project 1</h1>
+        <div class="todo-add">
+          <h2>Add Todo</h2>
+          <button class="todo-add-button" id="add-todo-button">+</button>
+        </div>
         <div class="modal">
           <div class="modal-content">
-            <h2>Add Todo</h2>
+            <h2>Add a New Todo :</h2>
             <form>
-              <input type="text" placeholder="Todo Title" />
+              <input type="text" placeholder="Todo Title" required />
               <input type="text" placeholder="Todo Description" />
-              <input type="date" name="deadline" id="deadline" />
+              <input type="date" name="deadline" id="deadline" required />
               <select name="priority" id="priority">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>

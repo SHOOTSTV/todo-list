@@ -1,9 +1,11 @@
+import ModalState from "./ModalState.js";
 import Todo from "./Todo.js";
 
 class TaskController {
   constructor(taskList, renderer) {
     this.taskList = taskList;
     this.renderer = renderer;
+    this.modalState = new ModalState(".modal", "add-todo-button");
 
     this.form = document.querySelector(".modal-content form");
     this.titleInput = document.querySelector('input[placeholder="Todo Title"]');
@@ -20,6 +22,7 @@ class TaskController {
       const description = this.descriptionInput.value.trim();
       const deadline = this.deadlineInput.value.trim();
       const priority = this.prioritySelect.value.trim();
+
       const todo = new Todo(
         crypto.randomUUID(),
         title,
@@ -29,6 +32,8 @@ class TaskController {
       );
       this.taskList.addTodo(todo);
       this.renderer.render(this.taskList.getTodo());
+
+      this.modalState.close();
 
       this.titleInput.value = "";
       this.descriptionInput.value = "";
