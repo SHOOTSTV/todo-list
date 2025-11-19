@@ -1,9 +1,9 @@
 import ModalState from "./ModalState.js";
 import Todo from "./Todo.js";
 
-class TaskController {
-  constructor(taskList, renderer) {
-    this.taskList = taskList;
+class TodoController {
+  constructor(todoList, renderer) {
+    this.todoList = todoList;
     this.renderer = renderer;
     this.modalState = new ModalState(".modal", "add-todo-button");
 
@@ -31,8 +31,8 @@ class TaskController {
         deadline,
         priority
       );
-      this.taskList.addTodo(todo);
-      this.renderer.render(this.taskList.getTodo());
+      this.todoList.addTodo(todo);
+      this.renderer.render(this.todoList.getTodo());
 
       this.modalState.close();
 
@@ -47,11 +47,11 @@ class TaskController {
     this.listElement.addEventListener("click", (e) => {
       if (e.target.classList.contains("todo-action-delete")) {
         const todoId = e.target.getAttribute("data-todo-id");
-        this.taskList.deleteTodo(todoId);
-        this.renderer.render(this.taskList.getTodo());
+        this.todoList.deleteTodo(todoId);
+        this.renderer.render(this.todoList.getTodo());
       }
     });
   }
 }
 
-export default TaskController;
+export default TodoController;
