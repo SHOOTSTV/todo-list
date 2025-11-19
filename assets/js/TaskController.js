@@ -16,6 +16,7 @@ class TaskController {
     this.prioritySelect = document.querySelector('select[name="priority"]');
   }
   init() {
+    // Handle form submission
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
       const title = this.titleInput.value.trim();
@@ -39,6 +40,16 @@ class TaskController {
       this.descriptionInput.value = "";
       this.deadlineInput.value = "";
       this.prioritySelect.value = "low";
+    });
+
+    // Handle delete button
+    this.listElement = document.getElementById("todo-list");
+    this.listElement.addEventListener("click", (e) => {
+      if (e.target.classList.contains("todo-action-delete")) {
+        const todoId = e.target.getAttribute("data-todo-id");
+        this.taskList.deleteTodo(todoId);
+        this.renderer.render(this.taskList.getTodo());
+      }
     });
   }
 }
