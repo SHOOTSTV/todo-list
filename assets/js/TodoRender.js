@@ -56,6 +56,7 @@ class TodoRender {
       actions.className = "todo-actions";
       editIcon.className = "fi fi-ss-pencil todo-action-edit";
       deleteIcon.className = "fi fi-ss-trash todo-action-delete";
+      deleteIcon.setAttribute("data-todo-id", todo.id);
 
       actions.appendChild(editIcon);
       actions.appendChild(deleteIcon);
