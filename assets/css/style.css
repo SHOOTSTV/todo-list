@@ -163,6 +163,46 @@ body {
   background: #4a79c0;
 }
 
+/* Confirm Deletion Modal */
+#confirm-modal {
+  backdrop-filter: none;
+}
+#confirm-modal .modal-content {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+}
+#confirm-modal p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+#confirm-modal button {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+#confirm-modal button:hover {
+  opacity: 0.8;
+}
+
+#confirm-delete {
+  background: #e53935;
+  color: white;
+  margin-right: 10px;
+}
+
+#cancel-delete {
+  background: #e0e0e0;
+  color: #333;
+}
+
 /* Main Todo Card */
 
 #todo-list {

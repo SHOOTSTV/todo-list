@@ -1,6 +1,6 @@
 import ModalController from "./ModalState.js";
-import TaskController from "./TodoController.js";
 import Todo from "./Todo.js";
+import TaskController from "./TodoController.js";
 import TodoList from "./TodoList.js";
 import TodoRender from "./TodoRender.js";
 

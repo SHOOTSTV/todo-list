@@ -14,6 +14,9 @@ class TodoController {
     );
     this.deadlineInput = document.querySelector('input[name="deadline"]');
     this.prioritySelect = document.querySelector('select[name="priority"]');
+    this.confirmModal = document.getElementById("confirm-modal");
+    this.confirmBtn = document.getElementById("confirm-delete");
+    this.cancelBtn = document.getElementById("cancel-delete");
   }
   init() {
     // Handle form submission
@@ -47,8 +50,15 @@ class TodoController {
     this.listElement.addEventListener("click", (e) => {
       if (e.target.classList.contains("todo-action-delete")) {
         const todoId = e.target.getAttribute("data-todo-id");
-        this.todoList.deleteTodo(todoId);
-        this.renderer.render(this.todoList.getTodo());
+        this.confirmModal.style.display = "flex";
+        this.confirmBtn.addEventListener("click", () => {
+          this.todoList.deleteTodo(todoId);
+          this.renderer.render(this.todoList.getTodo());
+          this.confirmModal.style.display = "none";
+        });
+        this.cancelBtn.addEventListener("click", () => {
+          this.confirmModal.style.display = "none";
+        });
       }
     });
   }
