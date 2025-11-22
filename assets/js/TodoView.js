@@ -1,4 +1,4 @@
-class TodoRender {
+class TodoView {
   constructor() {
     this.listElement = document.getElementById("todo-list");
   }
@@ -55,6 +55,7 @@ class TodoRender {
 
       actions.className = "todo-actions";
       editIcon.className = "fi fi-ss-pencil todo-action-edit";
+      editIcon.setAttribute("data-todo-id", todo.id);
       deleteIcon.className = "fi fi-ss-trash todo-action-delete";
       deleteIcon.setAttribute("data-todo-id", todo.id);
 
@@ -72,4 +73,4 @@ class TodoRender {
   }
 }
 
-export default TodoRender;
+export default TodoView;
