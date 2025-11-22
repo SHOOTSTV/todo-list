@@ -2,8 +2,8 @@ import ModalState from "./ModalState.js";
 import Todo from "./Todo.js";
 
 class TodoController {
-  constructor(todoList, renderer) {
-    this.todoList = todoList;
+  constructor(todoModel, renderer) {
+    this.todoModel = todoModel;
     this.renderer = renderer;
     this.modalState = new ModalState(".modal", "add-todo-button");
 
@@ -34,8 +34,8 @@ class TodoController {
         deadline,
         priority
       );
-      this.todoList.addTodo(todo);
-      this.renderer.render(this.todoList.getTodo());
+      this.todoModel.addTodo(todo);
+      this.renderer.render(this.todoModel.getTodo());
 
       this.modalState.close();
 
@@ -46,14 +46,14 @@ class TodoController {
     });
 
     // Handle delete button
-    this.listElement = document.getElementById("todo-list");
-    this.listElement.addEventListener("click", (e) => {
+    this.todoListElement = document.getElementById("todo-list");
+    this.todoListElement.addEventListener("click", (e) => {
       if (e.target.classList.contains("todo-action-delete")) {
         const todoId = e.target.getAttribute("data-todo-id");
         this.confirmModal.style.display = "flex";
         this.confirmBtn.addEventListener("click", () => {
-          this.todoList.deleteTodo(todoId);
-          this.renderer.render(this.todoList.getTodo());
+          this.todoModel.deleteTodo(todoId);
+          this.renderer.render(this.todoModel.getTodo());
           this.confirmModal.style.display = "none";
         });
         this.cancelBtn.addEventListener("click", () => {

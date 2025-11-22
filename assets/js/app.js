@@ -1,11 +1,11 @@
 import ModalController from "./ModalState.js";
 import Todo from "./Todo.js";
-import TaskController from "./TodoController.js";
-import TodoList from "./TodoList.js";
-import TodoRender from "./TodoRender.js";
+import TodoController from "./TodoController.js";
+import TodoModel from "./TodoModel.js";
+import TodoView from "./todoView.js";
 
-const todoList = new TodoList();
-const todoRender = new TodoRender();
+const todoModel = new TodoModel();
+const todoView = new TodoView();
 
 // Todo template for debugging
 const exampleTodo = new Todo(
@@ -15,11 +15,11 @@ const exampleTodo = new Todo(
   "2024-12-31",
   "high"
 );
-todoList.addTodo(exampleTodo);
+todoModel.addTodo(exampleTodo);
 
-todoRender.render(todoList.getTodo());
-const taskController = new TaskController(todoList, todoRender);
-taskController.init();
+todoView.render(todoModel.getTodo());
+const todoController = new TodoController(todoModel, todoView);
+todoController.init();
 
 const modalController = new ModalController(".modal", "add-todo-button");
 modalController.init();

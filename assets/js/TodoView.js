@@ -1,4 +1,4 @@
-class TodoRender {
+class TodoView {
   constructor() {
     this.listElement = document.getElementById("todo-list");
   }
@@ -72,4 +72,4 @@ class TodoRender {
   }
 }
 
-export default TodoRender;
+export default TodoView;
