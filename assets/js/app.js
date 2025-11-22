@@ -17,7 +17,7 @@ const exampleTodo = new Todo(
 );
 todoModel.addTodo(exampleTodo);
 
-todoView.render(todoModel.getTodo());
+todoView.render(todoModel.getTodos());
 const todoController = new TodoController(todoModel, todoView);
 todoController.init();
 

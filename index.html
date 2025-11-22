@@ -45,10 +45,19 @@
           <div class="modal-content">
             <h2>Add a New Todo :</h2>
             <form>
-              <input type="text" placeholder="Todo Title" required />
-              <input type="text" placeholder="Todo Description" />
+              <input
+                type="text"
+                name="title"
+                placeholder="Todo Title"
+                required
+              />
+              <input
+                type="text"
+                name="description"
+                placeholder="Todo Description"
+              />
               <input type="date" name="deadline" id="deadline" required />
-              <select name="priority" id="priority">
+              <select name="priority" id="priority" required>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>

@@ -55,6 +55,7 @@ class TodoView {
 
       actions.className = "todo-actions";
       editIcon.className = "fi fi-ss-pencil todo-action-edit";
+      editIcon.setAttribute("data-todo-id", todo.id);
       deleteIcon.className = "fi fi-ss-trash todo-action-delete";
       deleteIcon.setAttribute("data-todo-id", todo.id);
 
