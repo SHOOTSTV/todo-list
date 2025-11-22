@@ -53,8 +53,6 @@ class TodoController {
           priority
         );
         this.editingTodoId = null;
-        this.modalTitle.textContent = "Add a New Todo :";
-        this.modalButton.textContent = "Add Todo";
       } else {
         // Create new todo
         const todo = new Todo(
