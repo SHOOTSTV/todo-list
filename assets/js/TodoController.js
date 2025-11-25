@@ -2,24 +2,27 @@ import ModalState from "./ModalState.js";
 import Todo from "./Todo.js";
 
 class TodoController {
-  constructor(todoModel, renderer) {
+  constructor(todoModel, renderer, projectModel) {
     this.todoModel = todoModel;
     this.renderer = renderer;
+    this.projectModel = projectModel;
     this.modalState = new ModalState(".modal", "add-todo-button");
     this.editingTodoId = null;
+    this.currentProjectId = null;
 
-    this.form = document.querySelector(".modal-content form");
+    this.form = document.querySelector(".modal form");
     this.titleInput = document.querySelector('input[placeholder="Todo Title"]');
     this.descriptionInput = document.querySelector(
       'input[placeholder="Todo Description"]'
     );
     this.deadlineInput = document.querySelector('input[name="deadline"]');
     this.prioritySelect = document.querySelector('select[name="priority"]');
-    this.modalTitle = document.querySelector(".modal-content h2");
-    this.modalButton = document.querySelector(".modal-content form button");
+    this.modalTitle = document.querySelector(".modal .modal-content h2");
+    this.modalButton = document.querySelector(".modal form button");
     this.confirmModal = document.getElementById("confirm-modal");
     this.confirmBtn = document.getElementById("confirm-delete");
     this.cancelBtn = document.getElementById("cancel-delete");
+    this.cancelTodoBtn = document.getElementById("cancel-todo-button");
   }
   init() {
     // Reset form to create mode when opening modal via "Add Todo" button
@@ -33,6 +36,18 @@ class TodoController {
       this.descriptionInput.value = "";
       this.deadlineInput.value = "";
       this.prioritySelect.value = "low";
+    });
+
+    // Handle cancel button
+    this.cancelTodoBtn.addEventListener("click", () => {
+      this.modalState.close();
+      this.editingTodoId = null;
+      this.titleInput.value = "";
+      this.descriptionInput.value = "";
+      this.deadlineInput.value = "";
+      this.prioritySelect.value = "low";
+      this.modalTitle.textContent = "Add a New Todo :";
+      this.modalButton.textContent = "Add Todo";
     });
 
     // Handle form submission (unified for both create and update)
@@ -60,12 +75,15 @@ class TodoController {
           title,
           description,
           deadline,
-          priority
+          priority,
+          this.currentProjectId
         );
         this.todoModel.addTodo(todo);
       }
 
-      this.renderer.render(this.todoModel.getTodos());
+      this.renderer.render(
+        this.todoModel.getTodosByProject(this.currentProjectId)
+      );
       this.modalState.close();
 
       this.titleInput.value = "";
@@ -83,7 +101,9 @@ class TodoController {
 
         this.confirmBtn.addEventListener("click", () => {
           this.todoModel.deleteTodo(todoId);
-          this.renderer.render(this.todoModel.getTodos());
+          this.renderer.render(
+            this.todoModel.getTodosByProject(this.currentProjectId)
+          );
           this.confirmModal.style.display = "none";
         });
         this.cancelBtn.addEventListener("click", () => {
@@ -99,7 +119,7 @@ class TodoController {
         // Change the modal button text to "Update Todo"
         this.modalButton.textContent = "Update Todo";
 
-        const todos = this.todoModel.getTodos();
+        const todos = this.todoModel.getTodosByProject(this.currentProjectId);
         const todoToEdit = todos.find((todo) => todo.id === todoId);
         if (todoToEdit) {
           this.titleInput.value = todoToEdit.title;
@@ -110,6 +130,35 @@ class TodoController {
         this.modalState.open();
       }
     });
+  }
+  setCurrentProject(projectId) {
+    const projectNameElement = document.getElementById("project-name");
+
+    if (!projectId) {
+      this.currentProjectId = null;
+      this.renderer.render([]);
+      if (projectNameElement) {
+        projectNameElement.textContent = "";
+      }
+      return;
+    }
+    this.currentProjectId = projectId;
+    const todos = this.todoModel.getTodosByProject(projectId);
+    this.renderer.render(todos);
+
+    // Update project name in the header
+    if (projectNameElement) {
+      const project = this.projectModel
+        .getProjects()
+        .find((p) => p.id === projectId);
+      if (project) {
+        projectNameElement.textContent = project.title;
+      }
+    }
+  }
+
+  deleteTodosByProject(projectId) {
+    this.todoModel.deleteTodosByProject(projectId);
   }
 }
 
