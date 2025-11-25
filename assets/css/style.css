@@ -163,6 +163,36 @@ body {
   background: #4a79c0;
 }
 
+.modal-content > form > .cancel-button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content > form > .cancel-button:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+/* Modal Project */
+.modal-project {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
 /* Confirm Deletion Modal */
 #confirm-modal {
   backdrop-filter: none;

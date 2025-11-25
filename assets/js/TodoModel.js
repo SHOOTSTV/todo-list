@@ -24,6 +24,14 @@ class TodoModel {
   getTodos() {
     return this.todos;
   }
+
+  getTodosByProject(projectId) {
+    return this.todos.filter((todo) => todo.projectId === projectId);
+  }
+
+  deleteTodosByProject(projectId) {
+    this.todos = this.todos.filter((todo) => todo.projectId !== projectId);
+  }
 }
 
 export default TodoModel;
